@@ -10,12 +10,14 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_20_101614) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_20_105442) do
   create_table "communities", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_communities_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -23,6 +25,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_20_101614) do
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "community_id", null: false
+    t.index ["community_id"], name: "index_posts_on_community_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -37,4 +41,6 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_20_101614) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "communities", "users"
+  add_foreign_key "posts", "communities"
 end
