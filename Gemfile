@@ -47,6 +47,8 @@ gem "bootsnap", require: false
 # ADDED
 # Devise gem for user authentication
 gem "devise", "~> 4.9", ">= 4.9.3"
+# Faker gem for generating random data
+gem 'faker', '~> 3.2', '>= 3.2.3'
 
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem

@@ -1,4 +1,8 @@
+<h2><%= @community.name %></h2>
 <%= render @community %>
+
+<h2>Posts</h2>
+<%= render @community.posts %>
 
 <div>
   <%= link_to "Edit this community", edit_community_path(@community) %> |
