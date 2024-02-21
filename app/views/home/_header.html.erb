@@ -11,13 +11,15 @@
       <li class="nav-item">
         <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
       </li>
+      <li class="nav-item">
+          <%= link_to "All Communities", communities_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+          <%= link_to "All Posts", posts_path, class: "nav-link" %>
+      </li>
       <% if user_signed_in? %>
         <li class="nav-item">
-          <%= link_to "All Communities", communities_path, class: "nav-link" %>
-        </li>
-        <li class="nav-item">
-          <%= link_to "All Posts", posts_path, class: "nav-link" %>
-        </li>
+          <%= link_to "My Posts", home_user_posts_url, class: "nav-link" %>
         <li class="nav-item">
           <%= link_to "Edit Profile", edit_user_registration_path, class: "nav-link" %>
         </li>
