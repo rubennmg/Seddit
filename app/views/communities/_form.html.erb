@@ -22,6 +22,11 @@
   </div>
 
   <div>
+    <%= form.label :user_id, style: "display: block" %>
+    <%= form.number_field :user_id, id: :community_user_id, value: current_user.id %>
+  </div>
+
+  <div>
     <%= form.submit %>
   </div>
 <% end %>

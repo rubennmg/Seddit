@@ -3,6 +3,7 @@
 <div>
   <%= link_to "Edit this community", edit_community_path(@community) %> |
   <%= link_to "Back to communities", communities_path %>
+  <%= link_to "Post in this community", new_post_path(community_id: @community.id) %>
 
   <%= button_to "Destroy this community", @community, method: :delete %>
 </div>

@@ -8,6 +8,8 @@ class CommunitiesController < ApplicationController
 
   # GET /communities/1 or /communities/1.json
   def show
+    @community = Community.find(params[:id])
+    @post = Post.new(community_id: @community.id)
   end
 
   # GET /communities/new
@@ -21,7 +23,8 @@ class CommunitiesController < ApplicationController
 
   # POST /communities or /communities.json
   def create
-    @community = Community.new(community_params)
+    # @community = Community.new(community_params)
+    @community = current_user.communities.build(community_params)
 
     respond_to do |format|
       if @community.save

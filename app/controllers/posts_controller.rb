@@ -12,7 +12,7 @@ class PostsController < ApplicationController
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new(community_id: params[:community_id])
   end
 
   # GET /posts/1/edit
@@ -21,7 +21,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @community = Community.find(params[:post][:community_id])
+    @post = @community.posts.build(post_params)
 
     respond_to do |format|
       if @post.save
