@@ -1,19 +1,16 @@
-<% if user_signed_in? %>
-    <h1>Last posts</h1>
-    <% @posts = Post.order(created_at: :desc).limit(10) %>
-    <% @posts.each do |post| %>
-    <div class="post">
-        <h3><%= post.title %></h3>
-        <p><%= post.text %></p>
-        <p>
-            Posted by 
-            <strong><%= post.user.email %></strong>
-            in 
-            <strong><%= post.community.name %></strong>
-        </p>
-    </div>
-    <% end %>
-<% else %>
-    <h1>Welcome to Seddit!</h1>
-    <p>Sign up or log in to start posting and commenting!</p>
+<h1>Last posts</h1>
+<p>-------------------------------------------------------------------</p>
+<% @posts = Post.order(created_at: :desc).limit(10) %>
+<% @posts.each do |post| %>
+<div class="post">
+    <h3><%= post.title %></h3>
+    <p><%= post.text %></p>
+    <p>
+        -> Posted by 
+        <strong><%= post.user.email %></strong>
+        in 
+        <strong><%= post.community.name %></strong>
+    </p>
+<p>-------------------------------------------------------------------</p>
+</div>
 <% end %>
