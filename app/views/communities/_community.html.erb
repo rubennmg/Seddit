@@ -17,8 +17,7 @@
   </p>
   
   <% if current_user.id == community.user_id %>
-    <%= link_to "Delete this community", community, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+    <%= link_to "Delete this community", community, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %> |
+    <%= link_to "Edit this community", edit_community_path(community) %>
   <% end %>
-  
-  <p>----------------------------------------------------------</p>
 </div>

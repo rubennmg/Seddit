@@ -1,15 +1,17 @@
 <h2><%= @community.name %></h2>
 <%= render @community %>
-
+<p>----------------------------------------------------------</p>
+<br/>
 <h2>Posts</h2>
 <%= render @community.posts %>
 
 <div>
-  <%= link_to "Edit this community", edit_community_path(@community) %> |
+  <br/>
   <%= link_to "Back to communities", communities_path %> |
   <%= link_to "Post in this community", new_post_path(community_id: @community.id) %>
 
   <% if current_user.id == @community.user_id %>
+    | <%= link_to "Edit this community", edit_community_path(@community) %>
     <%= button_to "Destroy this community", @community, method: :delete %>
   <% end %>
 </div>
