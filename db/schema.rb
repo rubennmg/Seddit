@@ -25,7 +25,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_21_091823) do
     t.string "text"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "community_id", null: false
+    t.integer "community_id"
     t.integer "user_id"
     t.index ["community_id"], name: "index_posts_on_community_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
