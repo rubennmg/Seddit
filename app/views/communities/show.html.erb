@@ -9,7 +9,7 @@
   <%= link_to "Back to communities", communities_path %> |
   <%= link_to "Post in this community", new_post_path(community_id: @community.id) %>
 
-  <% if current_user.id = @community.user_id %>
+  <% if current_user.id == @community.user_id %>
     <%= button_to "Destroy this community", @community, method: :delete %>
   <% end %>
 </div>

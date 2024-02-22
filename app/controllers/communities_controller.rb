@@ -52,8 +52,11 @@ class CommunitiesController < ApplicationController
 
   # DELETE /communities/1 or /communities/1.json
   def destroy
+    # delete all community posts
+    @community.posts.destroy_all
+    # delete community
     @community.destroy!
-
+    
     respond_to do |format|
       format.html { redirect_to communities_url, notice: "Community was successfully destroyed." }
       format.json { head :no_content }
@@ -68,6 +71,6 @@ class CommunitiesController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def community_params
-      params.require(:community).permit(:name, :description)
+      params.fetch(:community, {}).permit(:name, :description, :user_id)
     end
 end
