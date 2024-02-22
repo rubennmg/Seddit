@@ -1,5 +1,6 @@
 <div id="<%= dom_id community %>">
   <p>----------------------------------------------------------</p>
+  
   <p>
     <strong>Name:</strong>
     <%= community.name %>
@@ -14,5 +15,10 @@
     <strong>Creada por:</strong>
     <%= community.user.email %>
   </p>
+  
+  <% if current_user.id == community.user_id %>
+    <%= link_to "Delete this community", community, data: { turbo_method: :delete, turbo_confirm: "Are you sure?" } %>
+  <% end %>
+  
   <p>----------------------------------------------------------</p>
 </div>

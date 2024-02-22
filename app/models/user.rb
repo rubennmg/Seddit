@@ -3,7 +3,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :communities
+  has_many :communities do
+    def by_current_user
+      where(user_id: proxy_association.owner.id)
+    end
+  end
+    
   has_many :posts, through: :communities do
     def by_current_user
       where(user_id: proxy_association.owner.id)
